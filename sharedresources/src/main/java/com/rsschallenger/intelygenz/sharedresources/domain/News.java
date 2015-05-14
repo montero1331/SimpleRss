@@ -1,4 +1,4 @@
-package com.rsschallenger.intelygenz.simplerss.viewPresenter.domain;
+package com.rsschallenger.intelygenz.sharedresources.domain;
 
 /**
  * Created by Jose Luis on 14/05/2015.

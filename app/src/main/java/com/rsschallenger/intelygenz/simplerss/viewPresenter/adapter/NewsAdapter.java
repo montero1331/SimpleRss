@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.rsschallenger.intelygenz.sharedresources.domain.News;
 import com.rsschallenger.intelygenz.simplerss.R;
-import com.rsschallenger.intelygenz.simplerss.viewPresenter.domain.News;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.viewHolder.NewsViewHolder;
 
 import java.util.ArrayList;

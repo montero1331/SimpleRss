@@ -6,8 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.rsschallenger.intelygenz.sharedresources.domain.News;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.adapter.NewsAdapter;
-import com.rsschallenger.intelygenz.simplerss.viewPresenter.domain.News;
 
 
 public class MainActivity extends Activity {
