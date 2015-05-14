@@ -1,18 +1,38 @@
 package com.rsschallenger.intelygenz.simplerss;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.rsschallenger.intelygenz.simplerss.viewPresenter.adapter.NewsAdapter;
+import com.rsschallenger.intelygenz.simplerss.viewPresenter.domain.News;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
+
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private NewsAdapter newsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        newsAdapter = new NewsAdapter(this);
+        recyclerView.setAdapter(newsAdapter);
+
+        //Precarga de datos de ejemplo
+        for (int i = 0; i < 5; i++) {
+            newsAdapter.add(new News("Holaaaaaaaaaaaa"+i,"iiiiiiiiiieeeeeeeeeee"+i,"12/12/12","http://2.bp.blogspot.com/-fHwVWVUS26Q/VP7PTAtWKpI/AAAAAAAABQU/cydQgiPMHP8/s1600/LayoutManager.png",""));
+        }
     }
+
 
 
     @Override
@@ -31,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
