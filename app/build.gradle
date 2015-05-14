@@ -22,6 +22,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':sharedresources')
+    compile project(':network')
+    compile project(':database')
     compile 'com.android.support:appcompat-v7:+',
             'com.android.support:recyclerview-v7:+',
             'com.github.bumptech.glide:glide:3.5.2',

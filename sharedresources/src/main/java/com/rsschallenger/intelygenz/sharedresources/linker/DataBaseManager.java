@@ -9,6 +9,9 @@ import java.util.ArrayList;
  */
 public interface DataBaseManager {
 
+    String DATABASE_NAME = "rss-database.sqlite";
+    int SCHEMA_VERSION = 1000;
+
     void insertNews(News news);
     ArrayList<News> getMyNews();
     void deleteAllMyNews();

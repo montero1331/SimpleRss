@@ -12,7 +12,6 @@ import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
 
-import java.net.URL;
 
 /**
  * Created by Jose Luis on 14/05/2015.
@@ -21,7 +20,7 @@ public class Network implements VolleyManager {
 
     private final RequestQueue requestQueue;
 
-    Network(Context context){
+    public Network(Context context){
         requestQueue= Volley.newRequestQueue(context);
     }
 
