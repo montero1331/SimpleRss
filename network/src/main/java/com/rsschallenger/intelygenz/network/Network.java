@@ -5,9 +5,12 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
+import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
+import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
 
 import java.net.URL;
 
@@ -23,8 +26,19 @@ public class Network implements VolleyManager {
     }
 
     @Override
-    public void addStringRequest(String url, Response.Listener listener, Response.ErrorListener errorListener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,listener, errorListener);
+    public void addStringRequest(String url, final ProperResponse properResponse, final ErrorResponse errorResponse) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        properResponse.goodResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                errorResponse.badResponse(error.getMessage());
+            }
+        });
         requestQueue.add(stringRequest);
     }
 }

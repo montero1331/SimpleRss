@@ -1,4 +1,4 @@
-package com.rsschallenger.intelygenz.simplerss;
+package com.rsschallenger.intelygenz.simplerss.viewPresenter.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.rsschallenger.intelygenz.sharedresources.domain.News;
+import com.rsschallenger.intelygenz.simplerss.R;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.adapter.NewsAdapter;
 
 
