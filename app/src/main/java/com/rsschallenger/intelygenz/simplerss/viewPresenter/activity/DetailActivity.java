@@ -16,6 +16,8 @@ import com.rsschallenger.intelygenz.sharedresources.domain.News;
 import com.rsschallenger.intelygenz.simplerss.R;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.presenter.DetailPresenter;
 
+import java.util.logging.Handler;
+
 /**
  * Created by Jose Luis on 14/05/2015.
  */

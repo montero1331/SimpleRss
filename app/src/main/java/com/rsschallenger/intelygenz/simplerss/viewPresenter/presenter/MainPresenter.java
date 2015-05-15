@@ -71,7 +71,6 @@ public class MainPresenter {
         intent.putExtra("description", news.getDescription().toString());
         intent.putExtra("url", news.getWebUrl().toString());
         intent.putExtra("image", news.getImageUrl().toString());
-        intent.putExtra("ramon", "ramon");
         activity.startActivity(intent);
 
     }

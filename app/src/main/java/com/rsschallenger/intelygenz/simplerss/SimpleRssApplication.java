@@ -13,9 +13,7 @@ public class SimpleRssApplication extends Application {
 
     @Override
     public void onCreate() {
-        DependencyManager.initializeApp(
-                new AppDependency(this),
-                new SharedDependency());
+        DependencyManager.initializeApp(new AppDependency(this), new SharedDependency());
     }
 
 }

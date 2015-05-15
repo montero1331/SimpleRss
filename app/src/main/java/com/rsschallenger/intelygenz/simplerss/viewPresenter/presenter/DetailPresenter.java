@@ -1,5 +1,8 @@
 package com.rsschallenger.intelygenz.simplerss.viewPresenter.presenter;
 
+import android.content.Intent;
+import android.net.Uri;
+
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.DetailActivity;
 
 /**
@@ -12,6 +15,8 @@ public class DetailPresenter {
     }
 
     public void goToWeb(String newUrl) {
-
+        Uri uriUrl = Uri.parse(newUrl);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        activity.startActivity(launchBrowser);
     }
 }

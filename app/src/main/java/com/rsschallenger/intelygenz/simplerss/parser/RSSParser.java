@@ -61,7 +61,7 @@ public class RSSParser {
                             }
                             plainTextDescription(news);
                         } else if (tagname.equalsIgnoreCase("link")) {
-                            news.setWebUrl(text);
+                            if (!text.contains("\n")) news.setWebUrl(text);
                         } else if (tagname.equalsIgnoreCase("thumbnail")) {
                             news.setImageUrl(parser.getAttributeValue(null, "url"));
                         } else if (tagname.equalsIgnoreCase("pubDate")) {
@@ -82,23 +82,24 @@ public class RSSParser {
     }
 
     //TODO Hot Fix Due To Lack Of Time
-    private static void getImageFromDescription( News news) throws XmlPullParserException, IOException {
-        String str=news.getDescription();
+    private static void getImageFromDescription(News news) throws XmlPullParserException, IOException {
+        String str = news.getDescription();
         try {
-            String result = str.substring(str.indexOf("src=\"http:") + 5,str.length());
-            result=result.substring(0,result.indexOf("\" class"));
+            String result = str.substring(str.indexOf("src=\"http:") + 5, str.length());
+            result = result.substring(0, result.indexOf("\" class"));
             news.setImageUrl(result);
-        }catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
 
     }
+
     private static void plainTextDescription(News news) throws XmlPullParserException, IOException {
-        String str=news.getDescription();
+        String str = news.getDescription();
         try {
-            String cleanDescription=Html.fromHtml(Html.fromHtml(str).toString()).toString();
+            String cleanDescription = Html.fromHtml(Html.fromHtml(str).toString()).toString();
             news.setDescription(cleanDescription);
-        }catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
 
