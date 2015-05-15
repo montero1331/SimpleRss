@@ -5,7 +5,7 @@
     <ImageView
         android:id="@+id/newsImageDetail"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="@dimen/dimension_120"
         android:layout_gravity="center_vertical"
         android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha"/>
 
@@ -21,21 +21,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/primary_dark_material_dark"
-            android:textSize="24sp"/>
+            android:textSize="@dimen/text_size_24"/>
 
         <TextView
             android:id="@+id/newsDescriptionDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/primary_dark_material_dark"
-            android:textSize="22sp"/>
+            android:textSize="@dimen/text_size_22"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/webButtonDetail"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/dimension_45"
         android:textColor="@color/primary_dark_material_dark"
         android:text="@string/goToNet"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/text_size_16"/>
 </LinearLayout>

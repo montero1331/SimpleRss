@@ -24,8 +24,8 @@ public class RSSParser {
     public static ArrayList<News> xmlToNewsList(String response) throws URISyntaxException {
         ArrayList<News> newsArrayList = new ArrayList<>();
 
-        XmlPullParserFactory factory = null;
-        XmlPullParser parser = null;
+        XmlPullParserFactory factory;
+        XmlPullParser parser;
         String tagname;
         InputStream is = new ByteArrayInputStream(response.getBytes());
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -39,7 +39,6 @@ public class RSSParser {
             String text = "";
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 tagname = parser.getName();
-                //Log.d(tagname, "tagname");
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         if (tagname.equalsIgnoreCase("item")) {

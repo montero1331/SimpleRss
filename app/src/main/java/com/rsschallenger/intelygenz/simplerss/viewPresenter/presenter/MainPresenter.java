@@ -9,6 +9,7 @@ import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
 import com.rsschallenger.intelygenz.sharedresources.utilities.NewsOperations;
+import com.rsschallenger.intelygenz.simplerss.R;
 import com.rsschallenger.intelygenz.simplerss.connectionManager.NetworkUtil;
 import com.rsschallenger.intelygenz.simplerss.parser.RSSParser;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.DetailActivity;
@@ -48,7 +49,7 @@ public class MainPresenter {
                     sendNewsToDataBase(resultArrayList);
 
                 } catch (URISyntaxException e) {
-                    activity.showError("Invalid Resource");
+                    activity.showError(activity.getString(R.string.invalidResource));
                 }
             }
         }, new ErrorResponse() {
@@ -82,7 +83,7 @@ public class MainPresenter {
     public void searchNews(String searchQuery) {
         ArrayList<News> resultArrayList;
         resultArrayList=dataBaseManager.searchNews(searchQuery);
-        if(resultArrayList.isEmpty()) activity.showError("No matches");
+        if(resultArrayList.isEmpty()) activity.showError(activity.getString(R.string.noMatches));
         else activity.setNews(resultArrayList);
     }
 }

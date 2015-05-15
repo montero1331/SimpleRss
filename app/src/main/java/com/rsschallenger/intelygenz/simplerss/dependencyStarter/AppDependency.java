@@ -10,8 +10,6 @@ import dagger.Provides;
 /**
  * Created by Jose Luis on 14/05/2015.
  */
-import dagger.Module;
-import dagger.Provides;
 
 @Module(injects = {Context.class})
 public class AppDependency {

@@ -24,7 +24,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
     public NewsAdapter(Context c, customOnClickListener customOnClickListener) {
         this.context = c;
-        newsList = new ArrayList<News>();
+        newsList = new ArrayList<>();
         this.customOnClickListener = customOnClickListener;
     }
 
@@ -66,6 +66,4 @@ public class NewsAdapter extends RecyclerView.Adapter {
     public interface customOnClickListener {
         void customOnItemSelected(News news);
     }
-
-    ;
 }
