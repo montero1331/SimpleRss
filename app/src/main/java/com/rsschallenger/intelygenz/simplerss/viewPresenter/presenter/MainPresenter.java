@@ -12,6 +12,7 @@ import com.rsschallenger.intelygenz.sharedresources.linker.DataBaseManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
+import com.rsschallenger.intelygenz.sharedresources.utilities.NewsOperations;
 import com.rsschallenger.intelygenz.simplerss.parser.RSSParser;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.DetailActivity;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.MainActivity;
@@ -44,6 +45,7 @@ public class MainPresenter {
             public void goodResponse(String message) {
                 try {
                     ArrayList<News> resultArrayList = RSSParser.xmlToNewsList(message);
+                    NewsOperations.sortNewsByDate(resultArrayList);
                     activity.setNews(resultArrayList);
                     sendNewsToDataBase(resultArrayList);
 
