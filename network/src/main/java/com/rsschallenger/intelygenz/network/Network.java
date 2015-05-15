@@ -12,6 +12,8 @@ import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
 
+import java.net.URISyntaxException;
+
 
 /**
  * Created by Jose Luis on 14/05/2015.

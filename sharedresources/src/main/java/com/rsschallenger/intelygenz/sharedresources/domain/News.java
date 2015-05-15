@@ -10,6 +10,9 @@ public class News {
     private String imageUrl;
     private String webUrl;
 
+    public News() {
+    }
+
     public News(String title, String description, String releasedDate, String imageUrl, String webUrl) {
         this.title = title;
         this.description = description;

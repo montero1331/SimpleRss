@@ -13,7 +13,7 @@ public class DependencyManager {
         dependencyManager = ObjectGraph.create(dependecies);
     }
 
-    public static ObjectGraph getInjector() {
+    public static ObjectGraph createInjector() {
         return dependencyManager;
     }
 

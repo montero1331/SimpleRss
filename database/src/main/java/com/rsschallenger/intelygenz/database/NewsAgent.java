@@ -19,7 +19,7 @@ public class NewsAgent {
 
     public static void createTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS '" + TABLE_NEWS + "' ('" + FIELD_TITLE + "' TEXT PRIMARY KEY NOT NULL, '" +
-                FIELD_DESCRIPTION + "' TEXT NOT NULL,'" + FIELD_DATE + "' TEXT NOT NULL, '" + FIELD_IMAGE + "' TEXT NOT NULL," +
+                FIELD_DESCRIPTION + "' TEXT NOT NULL,'" + FIELD_DATE + "' TEXT NOT NULL, '" + FIELD_IMAGE + "' TEXT NOT NULL" +
                 ", '" + FIELD_URL + "' TEXT NOT NULL);");
     }
 
