@@ -78,4 +78,11 @@ public class MainPresenter {
         intent.putExtra("image", news.getImageUrl());
         activity.startActivity(intent);
     }
+
+    public void searchNews(String searchQuery) {
+        ArrayList<News> resultArrayList;
+        resultArrayList=dataBaseManager.searchNews(searchQuery);
+        if(resultArrayList.isEmpty()) activity.showError("No matches");
+        else activity.setNews(resultArrayList);
+    }
 }

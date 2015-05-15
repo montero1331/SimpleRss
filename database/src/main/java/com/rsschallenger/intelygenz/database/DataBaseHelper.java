@@ -36,6 +36,13 @@ public class DataBaseHelper implements DataBaseManager {
         NewsAgent.createTable(db);
     }
 
+    @Override
+    public ArrayList<News> searchNews(String searchQuery) {
+        ArrayList<News> newsArrayList=new ArrayList<>();
+        for(News news:getMyNews()) if(news.getTitle().contains(searchQuery)) newsArrayList.add(news);
+        return newsArrayList;
+    }
+
     private static class OpenHelper extends SQLiteOpenHelper {
 
         public OpenHelper(Context context) {

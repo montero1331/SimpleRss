@@ -59,6 +59,10 @@ public class NewsAdapter extends RecyclerView.Adapter {
         return newsList.size();
     }
 
+    public void removeData() {
+        newsList.clear();
+    }
+
     public interface customOnClickListener {
         void customOnItemSelected(News news);
     }

@@ -15,5 +15,5 @@ public interface DataBaseManager {
     void insertNews(News news);
     ArrayList<News> getMyNews();
     void deleteAllMyNews();
-
+    ArrayList<News> searchNews(String searchQuery);
 }
