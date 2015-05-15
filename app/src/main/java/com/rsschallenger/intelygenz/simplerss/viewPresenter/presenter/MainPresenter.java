@@ -1,6 +1,8 @@
 package com.rsschallenger.intelygenz.simplerss.viewPresenter.presenter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 
 import com.rsschallenger.intelygenz.database.DataBaseHelper;
 import com.rsschallenger.intelygenz.network.Network;
@@ -11,6 +13,7 @@ import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
 import com.rsschallenger.intelygenz.simplerss.parser.RSSParser;
+import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.DetailActivity;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.MainActivity;
 
 import java.net.URISyntaxException;
@@ -40,7 +43,7 @@ public class MainPresenter {
             @Override
             public void goodResponse(String message) {
                 try {
-                    ArrayList<News> resultArrayList=RSSParser.xmlToNewsList(message);
+                    ArrayList<News> resultArrayList = RSSParser.xmlToNewsList(message);
                     activity.setNews(resultArrayList);
                     sendNewsToDataBase(resultArrayList);
 
@@ -59,5 +62,17 @@ public class MainPresenter {
     private void sendNewsToDataBase(ArrayList<News> resultArrayList) {
         dataBaseManager.deleteAllMyNews();
         for(News news:resultArrayList)dataBaseManager.insertNews(news);
+    }
+
+    public void goToDetailActivity(News news) {
+        Intent intent = new Intent();
+        intent.setClass(activity, DetailActivity.class);
+        intent.putExtra("title", news.getTitle().toString());
+        intent.putExtra("description", news.getDescription().toString());
+        intent.putExtra("url", news.getWebUrl().toString());
+        intent.putExtra("image", news.getImageUrl().toString());
+        intent.putExtra("ramon", "ramon");
+        activity.startActivity(intent);
+
     }
 }

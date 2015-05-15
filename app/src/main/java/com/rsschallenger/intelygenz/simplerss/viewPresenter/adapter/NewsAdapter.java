@@ -20,24 +20,17 @@ import java.util.List;
 public class NewsAdapter extends RecyclerView.Adapter {
     private List<News> newsList;
     private Context context;
+    private customOnClickListener customOnClickListener;
 
-    public NewsAdapter(Context c) {
+    public NewsAdapter(Context c, customOnClickListener customOnClickListener) {
         this.context = c;
         newsList = new ArrayList<News>();
+        this.customOnClickListener = customOnClickListener;
     }
 
     public void add(News i) {
         newsList.add(i);
         notifyItemInserted(newsList.indexOf(i));
-    }
-
-    public void remove(News item) {
-        int position = newsList.indexOf(item);
-
-        if (position != -1) {
-            newsList.remove(position);
-            notifyItemRemoved(position);
-        }
     }
 
     @Override
@@ -56,7 +49,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
         ((NewsViewHolder) holder).titleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(item);
+                customOnClickListener.customOnItemSelected(item);
             }
         });
     }
@@ -65,4 +58,10 @@ public class NewsAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return newsList.size();
     }
+
+    public interface customOnClickListener {
+        void customOnItemSelected(News news);
+    }
+
+    ;
 }

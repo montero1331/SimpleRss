@@ -35,7 +35,12 @@ public class MainActivity extends Activity {
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        newsAdapter = new NewsAdapter(this);
+        newsAdapter = new NewsAdapter(this,new NewsAdapter.customOnClickListener(){
+            @Override
+            public void customOnItemSelected(News news) {
+                presenter.goToDetailActivity(news);
+            }
+        });
         recyclerView.setAdapter(newsAdapter);
 
         presenter.getData(rssUrl);
