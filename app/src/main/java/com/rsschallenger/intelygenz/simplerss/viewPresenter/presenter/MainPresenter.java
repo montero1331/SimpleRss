@@ -1,11 +1,7 @@
 package com.rsschallenger.intelygenz.simplerss.viewPresenter.presenter;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 
-import com.rsschallenger.intelygenz.database.DataBaseHelper;
-import com.rsschallenger.intelygenz.network.Network;
 import com.rsschallenger.intelygenz.sharedresources.dependency.DependencyManager;
 import com.rsschallenger.intelygenz.sharedresources.domain.News;
 import com.rsschallenger.intelygenz.sharedresources.linker.DataBaseManager;
@@ -13,6 +9,7 @@ import com.rsschallenger.intelygenz.sharedresources.linker.VolleyManager;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ErrorResponse;
 import com.rsschallenger.intelygenz.sharedresources.linker.netResponser.ProperResponse;
 import com.rsschallenger.intelygenz.sharedresources.utilities.NewsOperations;
+import com.rsschallenger.intelygenz.simplerss.connectionManager.NetworkUtil;
 import com.rsschallenger.intelygenz.simplerss.parser.RSSParser;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.DetailActivity;
 import com.rsschallenger.intelygenz.simplerss.viewPresenter.activity.MainActivity;
@@ -40,6 +37,7 @@ public class MainPresenter {
     }
 
     public void getData(String rssUrl) {
+        if(NetworkUtil.hasAnyConnectivity(activity)){
         volleyManager.addStringRequest(rssUrl, new ProperResponse() {
             @Override
             public void goodResponse(String message) {
@@ -59,6 +57,11 @@ public class MainPresenter {
                 activity.showError(message);
             }
         });
+    }else {
+            ArrayList<News> resultArrayList=dataBaseManager.getMyNews();
+            NewsOperations.sortNewsByDate(resultArrayList);
+            activity.setNews(resultArrayList);
+        }
     }
 
     private void sendNewsToDataBase(ArrayList<News> resultArrayList) {
@@ -69,11 +72,10 @@ public class MainPresenter {
     public void goToDetailActivity(News news) {
         Intent intent = new Intent();
         intent.setClass(activity, DetailActivity.class);
-        intent.putExtra("title", news.getTitle().toString());
-        intent.putExtra("description", news.getDescription().toString());
-        intent.putExtra("url", news.getWebUrl().toString());
-        intent.putExtra("image", news.getImageUrl().toString());
+        intent.putExtra("title", news.getTitle());
+        intent.putExtra("description", news.getDescription());
+        intent.putExtra("url", news.getWebUrl());
+        intent.putExtra("image", news.getImageUrl());
         activity.startActivity(intent);
-
     }
 }
